@@ -97,8 +97,9 @@ app.get('/extract-zip', async (req, res) => {
         const zipFileName = zipUrl.split('/').pop(); // Get the filename part
 
         // Set up the path to extract inside your project folder (e.g., ./subtitles)
-        const extractPath = path.join('./subtitles');
-        await fs.mkdir(extractPath, { recursive: true }); // Make sure the 'subtitles' directory exists
+        const extractPath = path.join('./');
+        // const extractPath = path.join('./subtitles');
+        // await fs.mkdir(extractPath, { recursive: true }); // Make sure the 'subtitles' directory exists
 
         // Download the zip file using axios
         const response = await axios.get(zipUrl, { responseType: 'arraybuffer' });
