@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 app.get('/movie/:id', validateMovieId, async (req, res) => {
     const currentURI = `${req.protocol}://${req.get('host')}`;
     const movieId = req.params.id;
-    const url = `https://yifysubtitles.ch/movie-imdb/${movieId}`;
+    const url = `https://sudo-proxy.lustycodes.workers.dev/?destination=https://yifysubtitles.ch/movie-imdb/${movieId}`;
 
     try {
         const response = await fetch(url);
