@@ -18,6 +18,20 @@ const validateMovieId = (req, res, next) => {
     next();
 };
 
+// Route to display guide or instructions when visiting the root URL
+app.get('/', (req, res) => {
+    res.send(`
+        <h1>Welcome to the Movie Subtitles Service!</h1>
+        <p>This API allows you to fetch movie subtitles and extract subtitle zip files.</p>
+        <h3>Available Routes:</h3>
+        <ul>
+            <li><strong>/movie/:id</strong> - Get movie details and subtitles for a given IMDB movie ID (e.g., tt1234567).</li>
+            <li><strong>/extract-zip?zipUrl=URL</strong> - Extract subtitle zip file from the provided URL.</li>
+        </ul>
+        <p>Visit these endpoints to interact with the API.</p>
+    `);
+});
+
 // Route to fetch movie details and subtitles
 app.get('/movie/:id', validateMovieId, async (req, res) => {
     const currentURI = `${req.protocol}://${req.get('host')}`;
